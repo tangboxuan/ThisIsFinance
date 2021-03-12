@@ -1,0 +1,5 @@
+Flask==1.1.2
+apscheduler
+mechanize
+numpy
+waitress

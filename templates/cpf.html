@@ -1,0 +1,132 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    This is CPF
+{% endblock %}
+
+{% block main %}
+    <h1>This is CPF</h1>
+    <h6>Your friendly finance toolkit</h6>
+    <p></p>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Employment Type:</label>
+        </div>
+        <select class="custom-select" id="type">
+            <option value="np" selected>Non-Pensionable</option>
+            <option value="p">Pensionable</option>
+        </select>
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect02">Age</label>
+        </div>
+        <select class="custom-select" id="age">
+            <option value="35" selected>35 and below</option>
+            <option value="45">35 - 45</option>
+            <option value="50">45 - 50</option>
+            <option value="55">50 - 55</option>
+            <option value="60">55 - 60</option>
+            <option value="65">60 - 65</option>
+            <option value="70">Above 65</option>
+        </select>
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Monthly Salary:</span>
+        </div>
+        <div class="input-group-prepend">
+            <span id="month_currency" class="input-group-text">SGD</span>
+        </div>
+        <input id="monthly" type="number" min=0 step=500 onkeypress="return checkNumber(event)" class="form-control" aria-label="Amount (to the nearest dollar)">
+        <div class="input-group-append">
+            <span class="input-group-text">.00</span>
+        </div>
+        <div class="input-group-prepend">
+            <span class="input-group-text">Annual Salary:</span>
+        </div>
+        <div class="input-group-prepend">
+            <span id="year_currency" class="input-group-text">SGD</span>
+        </div>
+        <input id="annual" type="number" min=0 step=5000 onkeypress="return checkNumber(event)" class="form-control" aria-label="Amount (to the nearest dollar)">
+        <div class="input-group-append">
+            <span class="input-group-text">.00</span>
+        </div>
+    </div>
+    <h3>Annual Contribution</h3>
+    <table class="table table-bordered" style="table-layout: fixed;">
+        <thead>
+            <tr>
+                <th scope="col">Contribution</th>
+                <th scope="col">Employer</th>
+                <th scope="col">Self</th>
+                <th scope="col">Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">OA</th>
+                <td id="OA_E"></td>
+                <td id="OA_S"></td>
+                <td id="OA_T"></td>
+            </tr>
+            <tr>
+                <th scope="row">MA</th>
+                <td id="MA_E"></td>
+                <td id="MA_S"></td>
+                <td id="MA_T"></td>
+            </tr>
+                <tr>
+                <th scope="row">SA</th>
+                <td id="SA_E"></td>
+                <td id="SA_S"></td>
+                <td id="SA_T"></td>
+            </tr>
+            <tr>
+                <th scope="row">Total</th>
+                <td id="E_T"></td>
+                <td id="S_T"></td>
+                <td id="Total" style="font-weight:bold;"></td>
+            </tr>
+        </tbody>
+    </table>
+    <h3>Monthly Contribution</h3>
+    <table class="table table-bordered" style="table-layout: fixed;">
+        <thead>
+            <tr>
+                <th scope="col">Contribution</th>
+                <th scope="col">Employer</th>
+                <th scope="col">Self</th>
+                <th scope="col">Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">OA</th>
+                <td id="MOA_E"></td>
+                <td id="MOA_S"></td>
+                <td id="MOA_T"></td>
+            </tr>
+            <tr>
+                <th scope="row">MA</th>
+                <td id="MMA_E"></td>
+                <td id="MMA_S"></td>
+                <td id="MMA_T"></td>
+            </tr>
+                <tr>
+                <th scope="row">SA</th>
+                <td id="MSA_E"></td>
+                <td id="MSA_S"></td>
+                <td id="MSA_T"></td>
+            </tr>
+            <tr>
+                <th scope="row">Total</th>
+                <td id="ME_T"></td>
+                <td id="MS_T"></td>
+                <td id="MTotal" style="font-weight:bold;"></td>
+            </tr>
+        </tbody>
+    </table>
+    <footer class="small text-center text-muted">
+        Information correct as of 2020.
+    </footer>
+    <script src="static/cpf.js"></script>
+{% endblock %}

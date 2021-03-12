@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    This is Tax
+{% endblock %}
+
+{% block main %}
+    <h1>This is Tax</h1>
+    <h6>Your friendly finance toolkit</h6>
+    <p>Only applicable for United Kingdom and Singapore</p>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Country:</label>
+        </div>
+        <select class="custom-select" id="country">
+            <option value="sg" selected>Singapore</option>
+            <option value="uk">United Kingdom</option>
+        </select>
+        <div class="input-group-prepend">
+            <span class="input-group-text">Monthly Salary:</span>
+        </div>
+        <div class="input-group-prepend">
+            <span id="month_currency" class="input-group-text">SGD</span>
+        </div>
+        <input id="monthly" type="number" min=0 step=500 onkeypress="return checkNumber(event)" class="form-control" aria-label="Amount (to the nearest dollar)">
+        <div class="input-group-append">
+            <span class="input-group-text">.00</span>
+        </div>
+        <div class="input-group-prepend">
+            <span class="input-group-text">Annual Salary:</span>
+        </div>
+        <div class="input-group-prepend">
+            <span id="year_currency" class="input-group-text">SGD</span>
+        </div>
+        <input id="annual" type="number" min=0 step=5000 onkeypress="return checkNumber(event)" class="form-control" aria-label="Amount (to the nearest dollar)">
+        <div class="input-group-append">
+            <span class="input-group-text">.00</span>
+        </div>
+    </div>
+    <p>
+       Taxes:
+       <text id="tax_currency">SGD</text>
+       <text id="taxes">0</text>
+    </p>
+    <p id="disclaimer">Remember to deduct your <a href=/cpf>CPF contributions</a> from your income!</p>
+    <footer class="small text-center text-muted">
+        Information correct as of 2020.
+    </footer>
+    <script src="static/taxes.js"></script>
+{% endblock %}

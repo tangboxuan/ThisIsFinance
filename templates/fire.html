@@ -1,0 +1,109 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    This is FIRE
+{% endblock %}
+
+{% block main %}
+    <h1>This is FIRE</h1>
+    <h6>Your friendly finance toolkit</h6>
+    <p></p>
+    <h4>What is <a href="https://en.wikipedia.org/wiki/FIRE_movement">FIRE</a>? <small class="text-muted">Financial Independence, Retire Early</small></h4>
+    <p></p>
+    {% if error %}
+    {{ error }}
+    <p></p>
+    {% endif %}
+    <form action="/fire" method="post">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Current Net Worth:</span>
+            </div>
+            <div class="input-group-prepend">
+                <span class="input-group-text">$</span>
+            </div>
+            <input name="worth" type="number" min=1 onkeypress="return checkNumber(event)" class="form-control" aria-label="Amount (to the nearest dollar)">
+            <div class="input-group-append">
+                <span class="input-group-text">.00</span>
+            </div>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Monthly Expenditure in Retirement:</span>
+            </div>
+            <div class="input-group-prepend">
+                <span class="input-group-text">$</span>
+            </div>
+            <input name="expend" type="number" min=1 onkeypress="return checkNumber(event)" class="form-control" aria-label="Amount (to the nearest dollar)">
+            <div class="input-group-append">
+                <span class="input-group-text">.00</span>
+            </div>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Expected Investment Return:</span>
+            </div>
+            <input name="returns" type="number" min=0 max=20 value="4" onkeypress="return checkNumberDec(event)" class="form-control" aria-label="Percent">
+            <div class="input-group-append">
+                <span class="input-group-text">%</span>
+            </div>
+            <div class="input-group-prepend">
+                <span class="input-group-text">Years to Retirement:</span>
+            </div>
+            <input name="years" type="number" min=1 max=80 step=1 onkeypress="return checkNumber(event)" class="form-control" aria-label="Amount (to the nearest year)">
+        </div>
+        <button class="btn btn-primary" type="submit">Calculate</button>
+    </form>
+    <p></p>
+    {% if retire %}
+    <img src="static/retirement.jpg" class="img-fluid" alt="Responsive image">
+    <p>Source: https://retirementtipsandtricks.com/</p>
+    {% endif %}
+    {% if table %}
+    <h4>You need to save ${{ month }} a month for a total of ${{ total }}!</h4>
+    <table class="table table-bordered" style="table-layout: fixed;">
+        <thead>
+            <tr>
+                <th scope="col">Year</th>
+                <th scope="col">Previous Year's</th>
+                <th scope="col">New Savings</th>
+                <th scope="col">Investment Returns</th>
+                <th scope="col">Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in table %}
+            <tr>
+                <th scope="row">{{ row[0] }}</th>
+                <td>${{ row[1] }}</td>
+                <td>${{ savings }}</td>
+                <td>${{ row[2] }}</td>
+                <td>${{ row[3] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+    <script>
+        function checkNumber(key)
+        {
+            var charCode = (key.which) ? key.which : key.keyCode;
+            if (charCode > 31 && (charCode < 48 || charCode > 57))
+                return false;
+            return true;
+        }
+        function checkNumberDec(key)
+        {
+            var charCode = (key.which) ? key.which : key.keyCode;
+            if (charCode === 46)
+            {
+                return true;
+            }
+            else if (charCode > 31 && (charCode < 48 || charCode > 57))
+            {
+                return false;
+            }
+            return true;
+        }
+    </script>
+{% endblock %}
