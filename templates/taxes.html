@@ -15,12 +15,13 @@
         <select class="custom-select" id="country">
             <option value="sg" selected>Singapore</option>
             <option value="uk">United Kingdom</option>
+            <option value="ie">Ireland (Single)</option>
         </select>
         <div class="input-group-prepend">
             <span class="input-group-text">Monthly Salary:</span>
         </div>
         <div class="input-group-prepend">
-            <span id="month_currency" class="input-group-text">SGD</span>
+            <span class="input-group-text currency">SGD</span>
         </div>
         <input id="monthly" type="number" min=0 step=500 onkeypress="return checkNumber(event)" class="form-control" aria-label="Amount (to the nearest dollar)">
         <div class="input-group-append">
@@ -30,7 +31,7 @@
             <span class="input-group-text">Annual Salary:</span>
         </div>
         <div class="input-group-prepend">
-            <span id="year_currency" class="input-group-text">SGD</span>
+            <span class="input-group-text currency">SGD</span>
         </div>
         <input id="annual" type="number" min=0 step=5000 onkeypress="return checkNumber(event)" class="form-control" aria-label="Amount (to the nearest dollar)">
         <div class="input-group-append">
@@ -39,12 +40,28 @@
     </div>
     <p>
        Taxes:
-       <text id="tax_currency">SGD</text>
-       <text id="taxes">0</br></br>Annual Take Home: SGD 0</br>Monthly Take Home: SGD 0</text>
+       <text class="currency">SGD</text>
+       <text id="taxes">0</text>
+        </br></br>
+        Annual Take Home: 
+        <text class="currency">SGD</text>
+        <text id="yearTakeHome">0</text></br>
+        Monthly Take Home: 
+        <text class="currency">SGD</text>
+        <text id="monthTakeHome">0</text>
     </p>
     <p id="disclaimer">Remember to deduct your <a href=/cpf>CPF contributions</a> from your income!</p>
     <footer class="small text-center text-muted">
         Information correct as of 2020.
     </footer>
-    <script src="static/taxes.js"></script>
+    <script type="module" src="static/taxes.js"></script>
+    <script>
+        function checkNumber(key)
+        {
+            var charCode = (key.which) ? key.which : key.keyCode;
+            if (charCode > 31 && (charCode < 48 || charCode > 57))
+                return false;
+            return true;
+        }
+    </script>
 {% endblock %}

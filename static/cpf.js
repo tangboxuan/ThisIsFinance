@@ -120,7 +120,7 @@ function calculateCPF(income)
 
     document.querySelector("#OA_E").innerHTML = (OA * ratio).toFixed(2);
     document.querySelector("#OA_S").innerHTML = (OA * (1 - ratio)).toFixed(2);
-    document.querySelector("#OA_T").innerHTML = OA;
+    document.querySelector("#OA_T").innerHTML = OA.toFixed(2);
 
     document.querySelector("#MA_E").innerHTML = (MA * ratio).toFixed(2);
     document.querySelector("#MA_S").innerHTML = (MA * (1 - ratio)).toFixed(2);
