@@ -7,7 +7,7 @@
 {% block main %}
     <h1>This is Tax</h1>
     <h6>Your friendly finance toolkit</h6>
-    <p>Only applicable for United Kingdom and Singapore</p>
+    <p>Only applicable for Singapore, UK and US.</p>
     <div class="input-group mb-3">
         <div class="input-group-prepend">
             <label class="input-group-text" for="inputGroupSelect01">Country:</label>
@@ -15,6 +15,8 @@
         <select class="custom-select" id="country">
             <option value="sg" selected>Singapore</option>
             <option value="uk">United Kingdom</option>
+            <option value="ca">California (Single)</option>
+            <option value="ny">NYC (Single)</option>
             <option value="ie">Ireland (Single)</option>
         </select>
         <div class="input-group-prepend">
@@ -52,7 +54,7 @@
     </p>
     <p id="disclaimer">Remember to deduct your <a href=/cpf>CPF contributions</a> from your income!</p>
     <footer class="small text-center text-muted">
-        Information correct as of 2020.
+        Information correct as of 2021.
     </footer>
     <script type="module" src="static/taxes.js"></script>
     <script>
