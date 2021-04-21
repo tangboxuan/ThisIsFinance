@@ -97,12 +97,15 @@ function calculateTax(income)
 {
     if (country === "sg")
     {
-        document.querySelector("#taxes").innerHTML = sgTaxes(income).toFixed(0);
+		sgTax = sgTaxes(income).toFixed(0);
+		sgTakeHome = income - sgTax;
+        document.querySelector("#taxes").innerHTML = sgTax + "</br></br>Annual Take Home: SGD " + sgTakeHome + "</br>Monthly Take Home: SGD " + (sgTakeHome/12).toFixed(0);
     }
     if (country === "uk")
     {
     	ukTax = ukTaxes(income)
-        document.querySelector("#taxes").innerHTML = ukTax[0].toFixed(0) + "</br>Income Tax: GBP " + ukTax[1].toFixed(0) + "</br>National Insurance: GBP " + ukTax[2].toFixed(0);
+		ukTakeHome = income - ukTax[0].toFixed(0);
+        document.querySelector("#taxes").innerHTML = ukTax[0].toFixed(0) + "</br>Income Tax: GBP " + ukTax[1].toFixed(0) + "</br>National Insurance: GBP " + ukTax[2].toFixed(0) + "</br></br>Annual Take Home: GBP " + ukTakeHome + "</br>Monthly Take Home: GBP " + (ukTakeHome/12).toFixed(0);
     }
 }
 
