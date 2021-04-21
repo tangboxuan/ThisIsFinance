@@ -20,6 +20,10 @@ def cs50():
 def me():
     return render_template("boxuan.html")
 
+@app.route("/coursework")
+def coursework():
+    return render_template("coursework.html")
+
 @app.route("/taxes")
 def taxes():
     return render_template("taxes.html")
